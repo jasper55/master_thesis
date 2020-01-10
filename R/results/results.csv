@@ -1,2 +1,3 @@
 "filename"	"n_values"	"acc"	"expected_speed"	"mean_current_speed"	"median_current_speed"	"median_speed_distance_R"	"expected_bearing"	"mean_bearing"	"median_bearing"	"median_bearing_coords"	"bearing_from_LR"
 "04-12-2019_0"	412	13.56	1.58	2.58	1.82	1.9	250.58	NA	206.5	251.69	250.18
+"04-12-2019_0"	377	12	1.64	2.17	1.81	1.81	250.26	208.01	207.5	250.99	251

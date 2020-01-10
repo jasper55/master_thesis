@@ -1,6 +1,6 @@
 no_values_coords.meet_expected_speed <- function(lat, lon, time_diff, expected_speed)
 {
-time_diff <- shift.vec(time_diff,1)
+time_diff <- shift.vec(time_diff,-1)
 # start indices
 l <- length(lat)
 speed_number_of_values_needed_from_coords <- NA
