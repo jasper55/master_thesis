@@ -153,7 +153,7 @@ bearing_from_LR_start_end <- calculate_bearing_from_LR(lon_prev,lat_prev)
 #####
 # expected bearing
 len <- nrow(data_set)
-expected_bearing <- calculate_bearing_from_coords(lat_prev[1],lat_prev[len],lon_prev[1],lon_prev[len])
+bearing_expected <- calculate_bearing_from_coords(lat_prev[1],lat_prev[len],lon_prev[1],lon_prev[len])
 
 # expected speed
 total_distance <-   
@@ -193,7 +193,7 @@ results <- data.frame(filename = data_set_name,
                       mean_current_speed <- mean_current_speed,
                       median_current_speed = median_current_speed,
                       median_current_speed_R = median_current_speed_R,
-                      expected_bearing <- round(expected_bearing,2),
+                      expected_bearing <- round(bearing_expected,2),
                       mean_bearing <- mean_bearing,
                       median_bearing <- median_bearing,
                       median_bearing_coords <- median_bearing_coords,
@@ -208,11 +208,11 @@ rownames(results) <- NULL
 ##############################
 #   save results
 #####
-#source("functions/plot_and_save_results.R")
+source("functions/plot_and_save_results.R")
 
 #############################
 #### recursive calculation of number of previous values needed to meet expected values for speed
 ###################
-
-source("recursive_evaluation_no_of_needed_values.R")
+setwd(wrkDir)
+source("functions/recursive_evaluation_no_of_needed_values.R")
 
