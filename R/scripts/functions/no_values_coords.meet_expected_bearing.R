@@ -17,7 +17,7 @@ for (i in 2:l){
     print(paste("diff:",bearing_calc-expected_bearing,sep=""))
     print("")
     
-    if(abs(bearing_calc-expected_bearing) <= 2){
+    if(abs(bearing_calc-expected_bearing) <= 10){
       bearing_number_of_values_needed_from_coords[i] <- i-k
       break
     }

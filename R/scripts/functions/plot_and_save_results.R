@@ -58,13 +58,54 @@ dev.off()
 
 graphics.off()
 png(filename = paste("lat_lon_against_accuracy__",data_set_name,".png",sep=""), width = 7, height = 7, units = "in", res = 75)
-plot(lat_prev,col="red", main="lat and lon, against accuracy")
+plot(lat_prev,col="red", main="lat, lon against accuracy")
 par(new=TRUE)
 plot(lon_prev, col="blue",xlab="",ylab="")
 par(new=TRUE)
 plot(accuracy,type="l", col="green",xlab="",ylab="")
 legend('topright', 
        c("lat","lon","accuracy"),
+       col=c("red","blue","green"),
+       pch = c(19,19,NA),
+       lty = c(NA,NA,1),
+       cex=0.8)
+dev.off()
+
+graphics.off()
+png(filename = paste("lat_lon_against_bearing_20_values__",data_set_name,".png",sep=""), width = 16, height = 16, units = "in", res = 75)
+plot(lat_prev[20:40],col="red", main="lat, lon against bearing of 20 values",xlab="",ylab="")
+par(new=TRUE)
+plot(lon_prev[20:40], col="blue",xlab="",ylab="")
+par(new=TRUE)
+plot(bearing_calc_A_R[20:40],type="l", col="green",xlab="",ylab="")
+legend('topright', 
+       c("lat","lon","bearing"),
+       col=c("red","blue","green"),
+       pch = c(19,19,NA),
+       lty = c(NA,NA,1),
+       cex=0.8)
+dev.off()
+
+graphics.off()
+png(filename = paste("lat_lon_against_bearing_5_values__",data_set_name,".png",sep=""), width = 16, height = 16, units = "in", res = 75)
+plot(lat_prev[35:40],col="red", main="lat, lon against bearing of 5 alues",xlab="",ylab="")
+par(new=TRUE)
+plot(lon_prev[35:40], col="blue",xlab="",ylab="")
+par(new=TRUE)
+plot(bearing_calc_A_R[35:40],type="l", col="green",xlab="",ylab="")
+dev.off()
+
+
+graphics.off()
+png(filename = paste("lat_lon_against_bearing__",data_set_name,".png",sep=""), width = 16, height = 16, units = "in", res = 75)
+plot(lat_prev[1:10],col="red", main="lat, lon against bearing")
+par(new=TRUE)
+plot(lon_prev[1:10], col="blue",xlab="",ylab="")
+plot(lat_prev[1:10],lon_prev[1:10],col="black", main="lat, lon against bearing")
+par(new=TRUE)
+plot(bearing_calc_A_R,type="l", col="green",xlab="",ylab="")
+legend('topright', 
+       c("lat","lon","bearing"),
        col=c("red","blue","green"),
        pch = c(19,19,NA),
        lty = c(NA,NA,1),
