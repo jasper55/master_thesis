@@ -32,12 +32,13 @@ for (i in 2:l){
 
     bearing_calc <- as.numeric(calculate_bearing_from_LR(lon[k:i],lat[k:i]))
     print(bearing_calc)
+    print(abs(bearing_calc-expected_bearing))
     
     if(is.na(bearing_calc)) {
       
     }
     else{
-    if(abs(bearing_calc-expected_bearing) <= 10){
+    if(abs(bearing_calc-expected_bearing) <= 1){
     bearing_number_of_values_needed_from_coords[i] <- i-k
     #print(paste("k= ", k))
     #print(paste("bearing: ",bearing_calc))

@@ -1,11 +1,11 @@
 ## beginning
 
 
-data_set_name <- "04-12-2019_0"
+data_set_name <- "26-5-2020_1"
 # set project directories
 homeDir <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 wrkDir <- "D:/Backup/01_Masterarbeit/master_thesis/R/scripts"
-gpxData <- paste("D:/Backup/01_Masterarbeit/master_thesis/R/data/",data_set_name,".gpx",sep="")
+gpxData <- paste("D:/Backup/01_Masterarbeit/master_thesis/R/data/one_location_data/",data_set_name,".gpx",sep="")
 resDir <- paste("D:/Backup/01_Masterarbeit/master_thesis/R/results/",data_set_name,sep="")
 
 if (!dir.exists(resDir)){
@@ -58,24 +58,36 @@ str(coords)
 lat_prev <- as.numeric(coords["lat",])
 lon_prev <- as.numeric(coords["lon",])
 
+lat <- coords["lat",]
+
+# get the minim length of all columns
+M <- min(lengths(list(c(provider),
+        c(accuracy),
+        c(lat_prev),  
+        c(lon_prev),
+        c(distance),
+        c(time_elapsed),
+        c(bearing)), use.names = TRUE))
 
 
 
-data_set <- data.frame(provider = provider,
-                       accuracy = accuracy,
-                       lat_prev = lat_prev,  
-                       lon_prev = lon_prev,
-                       distance = distance,
-                       time_elapsed = time_elapsed,
-                       bearing = bearing
+data_set <- data.frame(provider = provider[1:M],
+                       accuracy = accuracy[1:M],
+                       lat_prev = lat_prev[1:M],  
+                       lon_prev = lon_prev[1:M],
+                       distance = distance[1:M],
+                       time_elapsed = time_elapsed[1:M],
+                       bearing = bearing[1:M]
   )
-len <- nrow(data_set)
+
+
+# delete rows where distance between two points is 0
 data_set <- data_set[data_set$distance != 0, ]
 
 data_set <- unique(data_set)
 # delete first 35 values as accurcy is very inaccurate
-N <- 35
-data_set <- data_set[-(1:N), , drop = FALSE]
+#N <- 35
+#data_set <- data_set[-(1:N), , drop = FALSE]
 
 len <- nrow(data_set)
 

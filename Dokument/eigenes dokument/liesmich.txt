@@ -1,0 +1,17 @@
+Vorlagen von "Bachelorarbeit und Masterarbeit mit LaTeX schreiben" 
+
+Ich habe die tex-Dateien in eine Präambel mit den Einstellungen und der eigentlichen tex-Datei mit dem Inhalt aufgeteilt. Somit sind Layout und Inhalt voneinenader getrennt.
+
+Die Textdateien sind in UTF-8 kodiert; falls Umlaute komisch dargestellt werden, zeigt das verwendete Programm diese Textdateien wahrscheinlich in ISO 8859-1 (latin1) an. Dann sollte das Programm über das Ansichts-Menü o.Ä. so eingestellt werden, dass es UTF-8 verwenden soll.
+
+Dr. Martin Bretschneider im Februar 2017
+
+
+Änderungen:
+01.11.2019: einige alte Pakete wurden durch neuere ersetzt
+25.02.2017: eigenen BibTeX-Einträg eingefügt, bessere Einleitung formuliert
+17.12.2016: Dopplungen in der Präambel entfernt
+11.07.2015: Änderungen in alphadin_martin.bst besser dokumentiert. Mehr Kommentare in arbeit-vorlage.tex.
+24.02.2015: Verweis auf Bildern in Bildern (subcaption), Vermeiden von Warnungen
+23.12.2014: Zeige Bilder nebeneinander mit dem Paket-subcaption
+22.03.2014: URL in Bibliographie

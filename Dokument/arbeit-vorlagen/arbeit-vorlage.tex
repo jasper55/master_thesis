@@ -1,0 +1,180 @@
+\input{arbeit-vorlage-praeambel.tex} % Importiere die Einstellungen aus der Präambel
+% hier beginnt der eigentliche Inhalt
+\begin{document}
+\pagenumbering{Roman} % Seitenummerierung mit großen römischen Zahlen 
+\pagestyle{empty} % keine Kopf- oder Fußzeilen auf den ersten Seiten
+
+% Titelseite
+\begin{center}
+\begin{Huge}
+\LaTeX-Vorlage\\
+\end{Huge}
+
+\begin{Large}
+für Bachelorarbeiten, Masterarbeiten und Dissertationen
+unter \url{https://www.bretschneidernet.de/tips/thesislatex.html} \\
+\end{Large}
+\vspace{8mm}
+Masterarbeit\\
+\vspace{0.4cm}
+\vspace{2 cm}
+Max Muster \\
+Matrikel-Nummer 12345678\\
+\vspace{8cm}
+\begin{tabular}{rl}
+{\bfseries Betreuer} & Prof. Dr. Bernhard Birnbaum\\
+{\bfseries Erstprüfer}&Prof. Dr. Bernhard Birnbaum\\
+{\bfseries Zweitprüfer}&Prof. Dr. Bernhard Birnbaum\\
+\end{tabular}
+
+\end{center}
+\clearpage
+
+% EInstellen der Kopf und Fußzeilen für den Rest der Seiten
+\pagestyle{scrheadings}
+\chead{\rightmark}  % Kopfzeile zentriert ('c' für center) mit Kapitelüberschrift
+\cfoot{\pagemark} % Fußzeile zentriert ('c' für center) mit Seitenzahl
+
+\tableofcontents % erstelle hier das Inhaltsverzeichnis
+\listoffigures % erstelle hier das Abbildungsverzeichnis
+\listoftables % erstelle hier das Tabellenverzeichnis
+
+\addchap{Symbolverzeichnis}\label{s.sym} % vergebe für das Symbolverzeichnis keine Kapitelnummer
+\section*{Allgemeine Symbole}\label{s.sym.alg}
+\begin{flushleft}\begin{tabularx}{\textwidth}{l|X}
+Symbol & Bedeutung\\\hline
+$a$ & der Skalar $a$ \\
+$\vec{x}$ & der Vektor $\vec{x}$\\
+$\mat{A}$ & die Matrix $\mat{A}$\\
+\end{tabularx}\end{flushleft}
+
+
+
+
+% richtiger Inhalt
+\chapter{Einleitung}
+\pagenumbering{arabic} % ab jetzt die normale arabische Nummerierung
+
+Dies ist eine \LaTeX-Vorlage für Bachelorarbeiten, Masterarbeiten, Dissertationen oder ähnliche Dokumente. Der Sinn ist, einen guten Startpunkt für die eigene Arbeit zu haben, um sich mit dem eigentlichen Inhalt zu beschäftigen. Sie soll also möglichst vielen einen schnellen und einfachen Start mit \LaTeX\ ermöglichen.
+
+Sie steht seit 2006 unter \url{https://www.bretschneidernet.de/tips/thesislatex.html} zur Verfügung.  Bei Google ist diese Seite seit vielen Jahren bei Suchbegriffen wie \textit{Masterarbeit Latex} und \textit{Bachelorarbeit Latex} auf den ersten Plätzen, ohne dass ich Werbung oder irgendeine SEO durchgeführt habe.
+
+Jeder Interessierte kann diese Vorlage nutzen und für die eigene Arbeit anpassen. Ich freue mich, wer in Webseiten oder sogenannten sozialen (oder asozialen?) Netzwerken auf die URL \url{https://www.bretschneidernet.de/tips/thesislatex.html} oder in \LaTeX-Dokumenten mit dem BibTeX-Verweis\cite{thesislatex} verlinkt, muss es aber nicht. Wer Vorschläge für Verbesserungen hat, kann mir diese mit den Kontaktdaten von \url{https://www.bretschneidernet.de/contact.html} gerne schicken.
+
+Dr.-Ing. Martin Bretschneider im Februar 2017
+
+
+
+
+
+\chapter{weiteres Kapitel}\label{c.weitereskapitel}
+In diesem Kapitel wird einiges gemacht\footnote{wobei einiges nicht vieles heißt, ich möchte hier also keine falschen Hoffnungen wecken.} Vor allem in \autoref{s.tiefer} wird einiges gezeigt, was noch nie jemand gesehen hat. Es lohnt sich also, dranzubleiben.
+
+\section{eine Sektion}\label{s.einesektion}
+Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? \todotext{das muss ich noch verfeinern, weil ich erst zur Hälfte verstanden habe} Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte er den schmalen Durchgang. Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der Dunkelheit seinen Weg zu ertasten und erstarrte\cite{weranders}: Anscheinend gab es keinen anderen Ausweg aus diesem kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst? Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang. Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
+
+
+\bild{bild}{16cm}{Test-Bild mit langer Bildunterschrift}{Test-Bild}
+
+Die \autoref{pythagoras}
+\begin{equation}
+a^2 + b^2 = c^2 \label{pythagoras}
+\end{equation}
+ist allseits bekannt und bedarf wohl keiner weiteren Erläuterung.
+
+Auch nicht schlecht ist \autoref{img.bild}. Aber überhaupt keinen Sinn macht \autoref{tab.sinnlos}. Hieran sieht man den Vorteil des autoref-Befehls und das so Links erstellt werden.
+
+\begin{table}[!hbt]\vspace{1ex}\centering\begin{tabular}{|l|l|}
+\hline
+Formen & Städte\\
+\hline
+\hline
+Quadrat &  Bunkenstedt \\
+\hline
+Dreieck &  Laggenbeck\\
+\hline
+Kreis &  Peine\\
+\hline
+Raute & Wakaluba \\
+\hline
+\end{tabular}
+\caption{\label{tab.sinnlos}eine sinnlose Tabelle}
+\vspace{2ex}\end{table}
+
+
+\subsection{jetzt geht es noch tiefer}\label{s.tiefer}
+
+Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte er den schmalen Durchgang. Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst? Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang. Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
+
+
+\begin{figure}
+\centering
+\subcaptionbox{Ein Bild im PDF mit einer Größe von nur 1,1 kB\label{img.schwein1}} {\includegraphics[width=0.49\textwidth]{images/schwein1}}
+\subcaptionbox{Das gleiche Bild als optimierte PNG-Datei mit einer Größe von 8,9 kB\label{img.schwein2}}
+{\includegraphics[width=0.49\textwidth]{images/schwein2}}
+\caption{Zwei Bilder werden mit dem \LaTeX-Paket subcaption nebeneinander angezeigt}\label{img.subcaption}
+\end{figure}
+
+Auch können Bilder in Bildern direkt angesprochen werden: \autoref{img.schwein1} und  \autoref{img.schwein2}.
+
+
+Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um.
+
+\begin{itemize}
+\item Erstens ist das soundso,
+
+\item dann darf man natürlich nicht vergessen und
+
+\item das ist auch noch wichtig.
+\end{itemize}
+
+
+Plötzlich erblickte er den schmalen Durchgang. Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst? Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang. Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
+
+
+
+
+
+
+Komplexe Tabellen sind nicht sehr einfach:
+
+\begin{table}[!hbt]\vspace{1ex}\centering
+\begin{tabular}{|ll||l|l|l|l|}\hline
+\multicolumn{2}{|c||}{}&\multicolumn{4}{c|}{ dies} \\
+\multicolumn{2}{|c||}{}& von dort  & und dort & über hier & zu Los \\\hline\hline
+\multirow{3}*{\rotatebox{90}{das}} & hier &  bla  & bla  & bla  & bla \\\cline{2-6}
+& dort & bla  & bla & bla  & bla  \\\cline{2-6}
+& da &  bla  & bla & bla & bla \\\hline
+\end{tabular}
+\caption[eine kompliziertere Tabelle]{eine kompliziertere Tabelle mit viel Beschreibungstext, der aber nicht im Tabellenverzeichnis auftauschen soll}
+\vspace{2ex}\end{table}
+
+
+Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte er den schmalen Durchgang. Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst? Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang. Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
+
+\chapter{Zusammenfassung}\label{c.zusammenfassung}
+
+Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte er den schmalen Durchgang. Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst? Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang. Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
+
+
+% Anhang
+\begin{landscape}\begin{multicols}{2}
+\appendix
+\chapter{Anhang}
+\section{Quelltexte}
+\subsubsection*{cpu.c aus Linux 2.6.16}\label{s.cpu}\lstinputlisting[language=C]{code/cpu.c}
+\end{multicols}\end{landscape}
+
+
+\bibliographystyle{alphadin_martin}
+\bibliography{bibliographie}
+
+
+\chapter*{Erklärung}
+
+Hiermit versichere ich, dass ich die vorliegende Arbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe, dass alle Stellen der Arbeit, die wörtlich oder sinngemäß aus anderen Quellen übernommen wurden, als solche kenntlich gemacht und dass die Arbeit in gleicher oder ähnlicher Form noch keiner Prüfungsbehörde vorgelegt wurde.
+
+\vspace{3cm}
+Ort, Datum \hspace{5cm} Unterschrift\\
+
+\end{document}
