@@ -1,0 +1,49 @@
+<gpx creator="GPS Tracker" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+ <metadata>
+   <time>2-8-2020 1:38</time>
+  </metadata> <trk>
+  <author>Jan-Jasper Wagner</author>
+  <trkseg>
+   <trkpt lat="52.505969" lon="13.3501597">
+    <accuracy>19.417</accuracy>
+    <bearing>0.0</bearing>
+    <speed>0.0</speed>
+    <time_elapsed>231621081000000</time_elapsed>
+    <provider>network</provider>
+    <distance>0</distance>
+    <elevation>72.29999542236328</elevation>
+    <time>2020-08-02T13:38:57Z</time>
+   </trkpt>
+    <trkpt lat="52.5061081" lon="13.3497338">
+    <acc>21.205</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>231641126000000</time_elapsed>
+    <provider>network</provider>
+    <distance>32.800865</distance>
+    <ele>72.19999694824219</ele>
+    <time>2020-08-02T13:38:57Z</time>
+   </trkpt>
+    <trkpt lat="52.5063624" lon="13.3493504">
+    <acc>21.432</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>231661171000000</time_elapsed>
+    <provider>network</provider>
+    <distance>38.451057</distance>
+    <ele>72.5999984741211</ele>
+    <time>2020-08-02T13:38:57Z</time>
+   </trkpt>
+    <trkpt lat="52.5063884" lon="13.3491032">
+    <acc>19.595</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>231681171000000</time_elapsed>
+    <provider>network</provider>
+    <distance>17.032505</distance>
+    <ele>73.0</ele>
+    <time>2020-08-02T13:38:57Z</time>
+   </trkpt>
+  </trkseg>
+ </trk>
+</gpx>

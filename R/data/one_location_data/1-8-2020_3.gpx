@@ -1,0 +1,139 @@
+<gpx creator="GPS Tracker" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+ <metadata>
+   <time>1-8-2020 6:37</time>
+  </metadata> <trk>
+  <author>Jan-Jasper Wagner</author>
+  <trkseg>
+   <trkpt lat="52.5069687" lon="13.3469845">
+    <accuracy>14.873</accuracy>
+    <bearing>0.0</bearing>
+    <speed>0.0</speed>
+    <time_elapsed>162960512283674</time_elapsed>
+    <provider>gps</provider>
+    <distance>0</distance>
+    <elevation>0.0</elevation>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069665" lon="13.3469916">
+    <acc>13.871</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>162980524801379</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.54068375</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069643" lon="13.3469907">
+    <acc>13.861</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163000518308668</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.25232118</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069638" lon="13.3469962">
+    <acc>20.0</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163020539076373</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.3775692</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069649" lon="13.3469884">
+    <acc>14.989</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163040516773245</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.54357713</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069639" lon="13.3469949">
+    <acc>14.137</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163060506531055</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.4551588</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069638" lon="13.3469944">
+    <acc>14.276</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163080528347718</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.035726897</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069661" lon="13.3469762">
+    <acc>20.0</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163100520743028</time_elapsed>
+    <provider>gps</provider>
+    <distance>1.2619959</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069689" lon="13.346977">
+    <acc>13.625</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163120551796150</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.31627506</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.506966" lon="13.3469872">
+    <acc>14.585</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163140527513334</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.7640663</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069727" lon="13.3469949">
+    <acc>13.242</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163160513183643</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.9106044</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069685" lon="13.3469827">
+    <acc>14.07</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163180521678432</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.9511212</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+    <trkpt lat="52.5069645" lon="13.346992">
+    <acc>13.014</acc>
+    <bear>0.0</bear>
+    <speed>0.0</speed>
+    <time_elapsed>163200527900825</time_elapsed>
+    <provider>gps</provider>
+    <distance>0.7725733</distance>
+    <ele>0.0</ele>
+    <time>2020-08-01T18:37:43Z</time>
+   </trkpt>
+  </trkseg>
+ </trk>
+</gpx>
