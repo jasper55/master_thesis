@@ -1,12 +1,13 @@
 ## beginning
 
 
-data_set_name <- "straight_walking_paths/gps/2-8-2020_4"
+data_set_name <- "car_rides/gps/6-8-2020_3"
 relative_Path_PC <- "D:/Github/MasterThesis/master_thesis/R"
 relative_Path_Laptop <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 
-relative_path <- relative_Path_PC
-#relative_path <- relative_Path_Laptop
+
+#relative_path <- relative_Path_PC
+relative_path <- relative_Path_Laptop
 
 # set project directories
 
@@ -35,7 +36,8 @@ package_name_string <- c('XML', 'OpenStreetMap',
 # 
 for (i in package_name_string) {
 #install.packages(i)
-library(i,character.only = TRUE)
+#library(i,character.only = TRUE)
+require(i,character.only = TRUE)
 }
 
 
@@ -74,13 +76,13 @@ speed <- as.numeric(speed)
 
 ### convert coordinates to meters
 setwd(fctDir)
-source("coordinate_to_meters.R")
-lat_m <- coordinate_to_meters(lat,0)
-lon_m <- coordinate_to_meters(0,lon)
+source("latToMeters.R")
+source("lonToMeters.R")
+lat_m <- latToMeters(lat,lon)
+lon_m <- lonToMeters(lat,lon)
 
 len <- length(lat_m)
-
-delta_t <- 0
+delta_t <- 1
 for(i in 2:(len)){
 delta_t[i] <- (time_elapsed[i]-time_elapsed[i-1])/1000000000 
 }
@@ -162,7 +164,7 @@ x <- rbind(c(NA,NA,NA,NA))
 x <- rbind(c(x_n_n_prev))
 vel_lon <- avg_speed_lon  
 vel_lat <- avg_speed_lat
-bearing_kalman <- 0
+
 
 
 # set uncertainities
@@ -173,7 +175,7 @@ factor_lat <- factor_lat_lon/(factor_lat_lon+1)
 factor_lon <- 1/(factor_lat_lon+1)
 
 obs_error <- (accuracy[2]*accuracy[2])/4 
-## half of messurement error,becuase of 2 dimensions
+## half of messurement error, 4 because of 2 dimensions
 
 process_error <- obs_error  # but 3 times the error as a general rule to start with
 speed_error_lat <- process_error * factor_lat * mean(delta_t,na.rm=TRUE)
@@ -189,12 +191,17 @@ c(0,0,0,speed_error_lat)
 
 # R_n = measurement error ----- accurarcy!!!!
 ## sensor noise covariance matrix
+bearing_kalman <- 0
+factor_mess_error <- 3
+messurement_error_increased <- FALSE
+messurement_error_resetted <- FALSE
+
 
 R <- rbind(
-c(3*obs_error * factor_lon,0,0,0),
-c(0,3*obs_error * factor_lat,0,0),
-c(0,0,speed_error_lon,0),
-c(0,0,0,speed_error_lat)
+c(factor_mess_error * 3 *obs_error * factor_lon,0,0,0),
+c(0,factor_mess_error * 3*obs_error * factor_lat,0,0),
+c(0,0,factor_mess_error * speed_error_lon*3,0),
+c(0,0,0,factor_mess_error * speed_error_lat*3)
 )      
 
 ### Q/ w_n another uncertainity, environment (waves, gusts, mistakes of the sailor) --- needs to be set depending on conditions
@@ -221,11 +228,10 @@ c(0,0,0,1)
 setwd(fctDir)
 source("calculate_bearing_from_meters.R")
 
-for (i in 2:(len)) {
-
+for (i in 2:(len-1)) {  ## da i-1 erster index ist und i = 2 initial state ist, wegen delta_t
 
 ### 0. init Matrices
-## update A + B
+## update A + B + R
 A <- rbind(
 c(1,0,delta_t[i],0),
 c(0,1,0,delta_t[i]),
@@ -240,6 +246,13 @@ c(0,0.5*(delta_t[i])^2),
 c(delta_t[i],0),
 c(0,delta_t[i])
 )
+
+R <- rbind(
+c(factor_mess_error * obs_error * factor_lon,0,0,0),
+c(0,factor_mess_error * obs_error * factor_lat,0,0),
+c(0,0,factor_mess_error * speed_error_lon / 3,0),
+c(0,0,0,factor_mess_error * speed_error_lat / 3)
+) 
 
 
 ## 1.
@@ -260,9 +273,10 @@ KG <- diag(diag(KG))
 ## New Observation
 vel_x <- (lon_m[i]-lon_m[i-1])/delta_t[i]
 vel_y <- (lat_m[i]-lat_m[i-1])/delta_t[i]
-print(vel_x)
 
-current_mes_error <- rbind(0,0,0,0)
+#e <- accuracy[i]  # just increases the value of the estimate, doesnt bring better results
+e <- 0
+current_mes_error <- rbind(e,e,e,e)
 y <- rbind(lon_m[i],lat_m[i],vel_x,vel_y) + current_mes_error 
 
 ### 6. 
@@ -278,15 +292,20 @@ P_n_n <- (1-KG) * P_n_n_prev
 x_n_n_prev <- x_n_n
 P_n_n_prev <- P_n_n + Q
 
+
 # save data to vector
 x <- rbind(x,c(x_n_n_prev))
 if (i > 2){ 
 vel_lon[i] <- (x[i,1]-x[i-1,1])/delta_t  
-vel_lat[i] <- (x[i,2]-x[i-1,2])/delta_t  
-}
-bearing_kalman[i] <- calculate_bearing_from_meters(x[i-1,1],x[i,1],x[i-1,2],x[i,2]) 
+vel_lat[i] <- (x[i,2]-x[i-1,2])/delta_t 
+ 
+
+
+} # end if (i > 2)
+
 
 }
+
 
 ##########################
 ### end loop
@@ -295,22 +314,33 @@ bearing_kalman[i] <- calculate_bearing_from_meters(x[i-1,1],x[i,1],x[i-1,2],x[i,
 
 # print results
 windows()
-  plot(lon_m[3:len-2])
+  plot(lon_m[2:len-2])
   lines(x[,1], lwd=2, col="blue")
   legend("topleft", legend=c("measurements","predictions"), lwd=c(1,2), col=c("black","blue"))
 
 
 windows()
-  plot(lat_m[3:len-2])
+  plot(lat_m[2:len-2])
   lines(x[,2], lwd=2, col="blue")
   legend("topleft", legend=c("measurements","predictions"), lwd=c(1,2), col=c("black","blue"))
 
 windows()
-  plot(lon_m[3:len-2],lat_m[3:len-2])
+  plot(lon_m[2:len-2],lat_m[2:len-2])
   par(new=TRUE)
   plot(x[,1],x[,2], type="l", lwd=2, col="blue")
   legend("topleft", legend=c("measurements","predictions"), lwd=c(1,2), col=c("black","blue"))
 
 
-
+  
+  # print results
+  windows()
+  plot(x[,3], lwd=2, col="red")
+  par(new=TRUE)
+  plot(x[,4], lwd=2, col="blue")
+  legend("topleft", legend=c("speed lon","speed lat"), lwd=c(1,2), col=c("red","blue"))
+  
+  windows()
+  plot(sqrt((x[,3]^2)+(x[,4]^2)), lwd=2, col="red")
+  
+  speed2 <- sqrt((x[,3]^2)+(x[,4]^2))
 

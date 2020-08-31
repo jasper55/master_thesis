@@ -1,0 +1,879 @@
+<gpx creator="GPS Tracker" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+ <metadata>
+   <time>6-8-2020 9:51</time>
+  </metadata> <trk>
+  <author>Jan-Jasper Wagner</author>
+  <trkseg>
+   <trkpt lat="49.534553137035026" lon="8.5126661576799">
+    <accuracy>4.7</accuracy>
+    <bearing>205.50761</bearing>
+    <speed>5.5938993</speed>
+    <time_elapsed>104127962624673</time_elapsed>
+    <provider>gps</provider>
+    <distance>0</distance>
+    <elevation>155.34678074810654</elevation>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53450325644094" lon="8.512632431170488">
+    <acc>4.7</acc>
+    <bear>205.06741</bear>
+    <speed>5.6238236</speed>
+    <time_elapsed>104128964679361</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.0611258</distance>
+    <ele>155.3902209904045</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53445191967601" lon="8.512601338856516">
+    <acc>4.7</acc>
+    <bear>201.9769</bear>
+    <speed>5.524222</speed>
+    <time_elapsed>104129979091340</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.137247</distance>
+    <ele>155.47168505750597</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53439938042745" lon="8.512572445365521">
+    <acc>4.7</acc>
+    <bear>200.09769</bear>
+    <speed>5.553242</speed>
+    <time_elapsed>104130957944985</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.2064342</distance>
+    <ele>155.28347516804934</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53434405527916" lon="8.512545189769638">
+    <acc>4.7</acc>
+    <bear>197.9415</bear>
+    <speed>5.7741084</speed>
+    <time_elapsed>104131957800193</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.461819</distance>
+    <ele>155.27565957792103</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53428735458163" lon="8.512518338491313">
+    <acc>4.7</acc>
+    <bear>198.79352</bear>
+    <speed>6.0002184</speed>
+    <time_elapsed>104132956630922</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.598989</distance>
+    <ele>155.46664762776345</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.534230288011294" lon="8.512494574333925">
+    <acc>4.7</acc>
+    <bear>196.93622</bear>
+    <speed>5.97915</speed>
+    <time_elapsed>104133971986651</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.575927</distance>
+    <ele>155.572877750732</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53417018738079" lon="8.512471560743538">
+    <acc>4.7</acc>
+    <bear>196.25311</bear>
+    <speed>6.303985</speed>
+    <time_elapsed>104134977592380</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.88885</distance>
+    <ele>155.56238374020904</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53411155711959" lon="8.512443436721215">
+    <acc>4.7</acc>
+    <bear>201.69412</bear>
+    <speed>5.9689937</speed>
+    <time_elapsed>104135966601755</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.831258</distance>
+    <ele>155.35037175379694</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53405486303927" lon="8.512413789061657">
+    <acc>4.7</acc>
+    <bear>200.76921</bear>
+    <speed>5.900615</speed>
+    <time_elapsed>104136965009568</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.660724</distance>
+    <ele>155.0948008801788</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53399666902526" lon="8.512381294296045">
+    <acc>4.7</acc>
+    <bear>201.38019</bear>
+    <speed>5.871826</speed>
+    <time_elapsed>104137963839255</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.886505</distance>
+    <ele>154.86382175423205</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.533940455878664" lon="8.512350952635868">
+    <acc>4.7</acc>
+    <bear>200.01921</bear>
+    <speed>5.9777184</speed>
+    <time_elapsed>104138972089255</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.6265917</distance>
+    <ele>154.5194733487442</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.533883616299754" lon="8.5123197498554">
+    <acc>4.7</acc>
+    <bear>200.86502</bear>
+    <speed>6.0843086</speed>
+    <time_elapsed>104139963373109</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.7130814</distance>
+    <ele>154.37193615548313</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.533828282146324" lon="8.512284085964843">
+    <acc>4.7</acc>
+    <bear>204.7408</bear>
+    <speed>5.988968</speed>
+    <time_elapsed>104140965355400</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.6738</distance>
+    <ele>154.05113626085222</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.533776031110335" lon="8.512248378296828">
+    <acc>4.7</acc>
+    <bear>205.40038</bear>
+    <speed>5.8661056</speed>
+    <time_elapsed>104141969165817</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.3602614</distance>
+    <ele>153.6967986151576</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53372421248149" lon="8.51220914329422">
+    <acc>4.7</acc>
+    <bear>208.72862</bear>
+    <speed>5.863553</speed>
+    <time_elapsed>104142964444983</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.425062</distance>
+    <ele>153.33624455425888</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53367269514155" lon="8.512174670094828">
+    <acc>4.7</acc>
+    <bear>202.12448</bear>
+    <speed>5.7916193</speed>
+    <time_elapsed>104143961751233</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.249577</distance>
+    <ele>153.18346826080233</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53361755469737" lon="8.512149183314019">
+    <acc>4.7</acc>
+    <bear>199.3934</bear>
+    <speed>5.962303</speed>
+    <time_elapsed>104144973678837</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.4042163</distance>
+    <ele>153.1020474275574</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53356324090895" lon="8.512123362117553">
+    <acc>4.7</acc>
+    <bear>199.75479</bear>
+    <speed>5.9682837</speed>
+    <time_elapsed>104145959002275</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.3233423</distance>
+    <ele>152.84008790459484</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53350929077758" lon="8.512098123001996">
+    <acc>4.7</acc>
+    <bear>200.41016</bear>
+    <speed>6.1150103</speed>
+    <time_elapsed>104146962562170</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.2723136</distance>
+    <ele>152.798756823875</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.533457291740056" lon="8.51206990747447">
+    <acc>4.7</acc>
+    <bear>199.99072</bear>
+    <speed>6.012892</speed>
+    <time_elapsed>104147970598108</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.1333957</distance>
+    <ele>152.82300630677491</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53340619949237" lon="8.512040298182162">
+    <acc>4.7</acc>
+    <bear>202.75526</bear>
+    <speed>5.968564</speed>
+    <time_elapsed>104148994225191</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.0732603</distance>
+    <ele>152.74188560340554</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.533356309990005" lon="8.512007424108502">
+    <acc>4.7</acc>
+    <bear>205.8633</bear>
+    <speed>5.676671</speed>
+    <time_elapsed>104149977426753</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.0374684</distance>
+    <ele>152.70096481591463</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53330961340472" lon="8.51197187812895">
+    <acc>4.7</acc>
+    <bear>207.41028</bear>
+    <speed>5.470011</speed>
+    <time_elapsed>104150953658003</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.796049</distance>
+    <ele>152.68363936804235</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53326353098087" lon="8.511936481643636">
+    <acc>4.7</acc>
+    <bear>206.53714</bear>
+    <speed>5.482662</speed>
+    <time_elapsed>104151971149669</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.730076</distance>
+    <ele>152.77002184279263</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53321664064407" lon="8.511902345804957">
+    <acc>4.7</acc>
+    <bear>204.6768</bear>
+    <speed>5.5071807</speed>
+    <time_elapsed>104152962892899</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.7709293</distance>
+    <ele>152.9767170716077</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.533166594854244" lon="8.511876030604531">
+    <acc>4.7</acc>
+    <bear>195.70262</bear>
+    <speed>5.791579</speed>
+    <time_elapsed>104153983258523</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.8830295</distance>
+    <ele>153.17487740051</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53311521624192" lon="8.511851662724636">
+    <acc>4.7</acc>
+    <bear>197.74158</bear>
+    <speed>5.8423653</speed>
+    <time_elapsed>104154989578315</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.9803886</distance>
+    <ele>153.41227275691926</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53306677331065" lon="8.511821640818708">
+    <acc>4.7</acc>
+    <bear>201.37904</bear>
+    <speed>5.6316195</speed>
+    <time_elapsed>104155965244981</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.809607</distance>
+    <ele>153.53667605295777</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.533020896676945" lon="8.51178733775636">
+    <acc>4.7</acc>
+    <bear>203.16458</bear>
+    <speed>5.373507</speed>
+    <time_elapsed>104156985402794</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.6745396</distance>
+    <ele>153.8708905102685</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53297365514514" lon="8.511752555954823">
+    <acc>4.7</acc>
+    <bear>202.96904</bear>
+    <speed>5.623781</speed>
+    <time_elapsed>104157986238210</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.82631</distance>
+    <ele>154.478343218565</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53292506715476" lon="8.511714270918937">
+    <acc>4.7</acc>
+    <bear>205.9165</bear>
+    <speed>5.5976996</speed>
+    <time_elapsed>104158971408523</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.0731606</distance>
+    <ele>155.0730003081262</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.532878434006854" lon="8.511674363090073">
+    <acc>4.7</acc>
+    <bear>210.27216</bear>
+    <speed>5.5741444</speed>
+    <time_elapsed>104159964660085</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.9368043</distance>
+    <ele>155.6226556710899</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53283128172715" lon="8.511637461981545">
+    <acc>4.7</acc>
+    <bear>205.59618</bear>
+    <speed>5.499636</speed>
+    <time_elapsed>104160975894981</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.885386</distance>
+    <ele>155.99618655163795</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53278271215746" lon="8.51160478817411">
+    <acc>4.8592453</acc>
+    <bear>202.37318</bear>
+    <speed>5.438582</speed>
+    <time_elapsed>104161967998105</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.8970146</distance>
+    <ele>156.26274240668863</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53273676184686" lon="8.51157220570346">
+    <acc>4.6832175</acc>
+    <bear>206.72777</bear>
+    <speed>5.393191</speed>
+    <time_elapsed>104162963909043</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.628598</distance>
+    <ele>156.37003319431096</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.532689675306955" lon="8.511540850696749">
+    <acc>4.8473372</acc>
+    <bear>201.83939</bear>
+    <speed>5.4651427</speed>
+    <time_elapsed>104163993376230</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.707672</distance>
+    <ele>156.35902809072286</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53264162202147" lon="8.511506839883518">
+    <acc>4.7</acc>
+    <bear>206.2141</bear>
+    <speed>5.418185</speed>
+    <time_elapsed>104164962704355</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.8842955</distance>
+    <ele>156.08400907367468</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53259601259756" lon="8.511471587759665">
+    <acc>4.878117</acc>
+    <bear>207.4333</bear>
+    <speed>5.270106</speed>
+    <time_elapsed>104165960747584</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.6783814</distance>
+    <ele>156.0115483365953</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.532545361499665" lon="8.51143811881725">
+    <acc>4.7</acc>
+    <bear>201.00293</bear>
+    <speed>5.7455244</speed>
+    <time_elapsed>104166969902792</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.1323066</distance>
+    <ele>155.67989666201174</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53249036308324" lon="8.511401836207703">
+    <acc>4.965416</acc>
+    <bear>203.19319</bear>
+    <speed>5.880533</speed>
+    <time_elapsed>104167966283521</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.6569514</distance>
+    <ele>155.00880672223866</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.532434848007256" lon="8.511366386383822">
+    <acc>4.7</acc>
+    <bear>202.47667</bear>
+    <speed>6.0952454</speed>
+    <time_elapsed>104168963359563</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.6864247</distance>
+    <ele>154.5955015970394</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53238379295629" lon="8.511330420247045">
+    <acc>4.7</acc>
+    <bear>207.46255</bear>
+    <speed>5.570252</speed>
+    <time_elapsed>104169971451750</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.246762</distance>
+    <ele>154.25461309682578</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53233281323009" lon="8.511295809618437">
+    <acc>4.9539638</acc>
+    <bear>204.53618</bear>
+    <speed>5.6325397</speed>
+    <time_elapsed>104170965301750</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.1988435</distance>
+    <ele>154.0431343903765</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.532278680451334" lon="8.51126448582516">
+    <acc>4.7421446</acc>
+    <bear>202.71532</bear>
+    <speed>5.806482</speed>
+    <time_elapsed>104171962727271</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.4334865</distance>
+    <ele>154.03214656095952</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53222494518226" lon="8.511236333952374">
+    <acc>4.7373357</acc>
+    <bear>200.37624</bear>
+    <speed>5.777757</speed>
+    <time_elapsed>104172990260083</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.314332</distance>
+    <ele>154.25077119655907</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53216752508366" lon="8.511215834249567">
+    <acc>4.934189</acc>
+    <bear>192.00513</bear>
+    <speed>6.1081223</speed>
+    <time_elapsed>104173965834041</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.5564094</distance>
+    <ele>154.5518120797351</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.532109636518676" lon="8.5111931325742">
+    <acc>4.7</acc>
+    <bear>200.7249</bear>
+    <speed>5.876905</speed>
+    <time_elapsed>104174964098624</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.6447873</distance>
+    <ele>154.9904006253928</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53205544085581" lon="8.511169255395265">
+    <acc>4.8897567</acc>
+    <bear>198.68246</bear>
+    <speed>5.5450044</speed>
+    <time_elapsed>104175967180395</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.270568</distance>
+    <ele>155.28057741746306</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53200162879048" lon="8.511146064251061">
+    <acc>4.90486</acc>
+    <bear>199.3043</bear>
+    <speed>5.6929483</speed>
+    <time_elapsed>104176968952791</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.215973</distance>
+    <ele>155.39479173719883</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53194876778569" lon="8.511123832626943">
+    <acc>4.7467833</acc>
+    <bear>198.61615</bear>
+    <speed>5.347283</speed>
+    <time_elapsed>104177965151749</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.095488</distance>
+    <ele>155.34572394844145</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.5318972280783" lon="8.511099319534676">
+    <acc>4.235087</acc>
+    <bear>199.84142</bear>
+    <speed>5.476562</speed>
+    <time_elapsed>104178964050186</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.0006227</distance>
+    <ele>155.40403378475457</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.531848409622086" lon="8.511066193002891">
+    <acc>4.7</acc>
+    <bear>206.64438</bear>
+    <speed>5.4077916</speed>
+    <time_elapsed>104179971611124</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.9355636</distance>
+    <ele>155.52130502276123</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53179934012426" lon="8.511031936784025">
+    <acc>4.8044753</acc>
+    <bear>203.72122</bear>
+    <speed>5.4175167</speed>
+    <time_elapsed>104180967913728</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.9944806</distance>
+    <ele>155.49321675300598</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53174838624867" lon="8.510999219384331">
+    <acc>4.9964333</acc>
+    <bear>202.0574</bear>
+    <speed>5.619918</speed>
+    <time_elapsed>104181966050186</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.1420884</distance>
+    <ele>155.65137784648687</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53169393883758" lon="8.510970001473156">
+    <acc>4.2535806</acc>
+    <bear>198.06209</bear>
+    <speed>5.7514377</speed>
+    <time_elapsed>104182965504352</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.4143867</distance>
+    <ele>155.74504118412733</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53164267215459" lon="8.510935154771387">
+    <acc>4.7607107</acc>
+    <bear>201.78253</bear>
+    <speed>5.4138527</speed>
+    <time_elapsed>104183976433519</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.234957</distance>
+    <ele>155.87400813400745</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.5315934499664" lon="8.510901428534035">
+    <acc>4.7</acc>
+    <bear>202.33112</bear>
+    <speed>5.541064</speed>
+    <time_elapsed>104184961170498</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.9942217</distance>
+    <ele>156.0572130009532</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.5315410821726" lon="8.510868409867056">
+    <acc>4.778452</acc>
+    <bear>202.76013</bear>
+    <speed>5.740763</speed>
+    <time_elapsed>104185973324664</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.2957263</distance>
+    <ele>156.1368594719097</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.531485621419655" lon="8.510842717707737">
+    <acc>4.7</acc>
+    <bear>192.90538</bear>
+    <speed>5.810719</speed>
+    <time_elapsed>104186976498622</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.442636</distance>
+    <ele>156.01699231378734</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53142989729981" lon="8.510819082385511">
+    <acc>4.7</acc>
+    <bear>196.3087</bear>
+    <speed>5.9010944</speed>
+    <time_elapsed>104187963743414</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.429472</distance>
+    <ele>155.60732472874224</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53137338063164" lon="8.510787935702618">
+    <acc>4.7</acc>
+    <bear>197.9743</bear>
+    <speed>6.015833</speed>
+    <time_elapsed>104188965398622</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.677936</distance>
+    <ele>155.13336765114218</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53131586909744" lon="8.510755010902397">
+    <acc>4.7</acc>
+    <bear>199.34515</bear>
+    <speed>6.1427937</speed>
+    <time_elapsed>104189966208518</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.8260627</distance>
+    <ele>154.70541397947818</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.531259513969225" lon="8.510722400456027">
+    <acc>4.559345</acc>
+    <bear>198.97647</bear>
+    <speed>6.047991</speed>
+    <time_elapsed>104190965193934</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.697639</distance>
+    <ele>154.65117065701634</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53120211535964" lon="8.510693377267227">
+    <acc>4.8571057</acc>
+    <bear>196.21536</bear>
+    <speed>6.305245</speed>
+    <time_elapsed>104191966976747</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.720719</distance>
+    <ele>154.49652047175914</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53114726751783" lon="8.51065818323381">
+    <acc>4.7746596</acc>
+    <bear>199.68626</bear>
+    <speed>5.995453</speed>
+    <time_elapsed>104192957615809</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.610826</distance>
+    <ele>154.38004321418703</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53109503841016" lon="8.510617704325066">
+    <acc>3.9759107</acc>
+    <bear>202.75084</bear>
+    <speed>6.2485867</speed>
+    <time_elapsed>104193965537684</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.5061655</distance>
+    <ele>154.34906050842255</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53104243185776" lon="8.510583055886148">
+    <acc>4.7</acc>
+    <bear>200.44324</bear>
+    <speed>6.0320973</speed>
+    <time_elapsed>104194970064246</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.365865</distance>
+    <ele>154.25122170895338</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53099002282091" lon="8.510550065191063">
+    <acc>4.7</acc>
+    <bear>203.96059</bear>
+    <speed>6.088327</speed>
+    <time_elapsed>104195965994975</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.299212</distance>
+    <ele>154.2325668754056</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53093635917196" lon="8.510519014487011">
+    <acc>4.7</acc>
+    <bear>202.94168</bear>
+    <speed>5.9550576</speed>
+    <time_elapsed>104196963830913</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.3777113</distance>
+    <ele>154.35127726849169</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53088527677108" lon="8.510488584741866">
+    <acc>4.7</acc>
+    <bear>200.62285</bear>
+    <speed>5.72011</speed>
+    <time_elapsed>104197971645496</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.0934906</distance>
+    <ele>154.45506803318858</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53083494648162" lon="8.510461167387232">
+    <acc>4.7</acc>
+    <bear>198.23045</bear>
+    <speed>5.896873</speed>
+    <time_elapsed>104198976677266</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.9391875</distance>
+    <ele>154.69116756599396</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53078611907438" lon="8.510431626502221">
+    <acc>4.7</acc>
+    <bear>201.71243</bear>
+    <speed>5.7092094</speed>
+    <time_elapsed>104199972494975</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.836473</distance>
+    <ele>154.64589001517743</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.530738418653144" lon="8.510403036910093">
+    <acc>4.7</acc>
+    <bear>199.71327</bear>
+    <speed>5.698037</speed>
+    <time_elapsed>104200963139245</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.6946435</distance>
+    <ele>154.7092996351421</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53068737633683" lon="8.510378542104815">
+    <acc>4.7</acc>
+    <bear>197.28398</bear>
+    <speed>5.954034</speed>
+    <time_elapsed>104201965688204</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.947417</distance>
+    <ele>154.67610709834844</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53063599813841" lon="8.510348575189676">
+    <acc>4.5724416</acc>
+    <bear>202.91092</bear>
+    <speed>6.0058136</speed>
+    <time_elapsed>104202963849141</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.112208</distance>
+    <ele>154.70398404542357</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.530582369996274" lon="8.510319171303806">
+    <acc>4.738361</acc>
+    <bear>199.29431</bear>
+    <speed>6.047951</speed>
+    <time_elapsed>104203965576745</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.332962</distance>
+    <ele>154.49088041577488</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53052881490421" lon="8.510290270136432">
+    <acc>4.7</acc>
+    <bear>201.5561</bear>
+    <speed>5.8811984</speed>
+    <time_elapsed>104204967518411</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.3131576</distance>
+    <ele>154.19045159500092</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53047567877869" lon="8.510257848626082">
+    <acc>4.7</acc>
+    <bear>203.96033</bear>
+    <speed>5.7965856</speed>
+    <time_elapsed>104205964226224</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.3588004</distance>
+    <ele>153.90717509388924</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53042475091248" lon="8.510230664178447">
+    <acc>4.7</acc>
+    <bear>196.62122</bear>
+    <speed>5.473918</speed>
+    <time_elapsed>104206962737161</time_elapsed>
+    <provider>gps</provider>
+    <distance>5.9963207</distance>
+    <ele>153.8113693939522</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53037249943016" lon="8.510205278884955">
+    <acc>4.7</acc>
+    <bear>197.11603</bear>
+    <speed>6.166781</speed>
+    <time_elapsed>104207971905911</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.0950446</distance>
+    <ele>153.73764802888036</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53031757008676" lon="8.510176787118962">
+    <acc>4.805487</acc>
+    <bear>199.2516</bear>
+    <speed>6.101216</speed>
+    <time_elapsed>104208962085598</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.4480247</distance>
+    <ele>153.6259769918397</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53026296336767" lon="8.510147963321822">
+    <acc>4.776591</acc>
+    <bear>199.83385</bear>
+    <speed>6.0416403</speed>
+    <time_elapsed>104209980937681</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.4218082</distance>
+    <ele>153.5163963586092</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.53020289916148" lon="8.51013481827083">
+    <acc>4.7</acc>
+    <bear>185.19359</bear>
+    <speed>6.629469</speed>
+    <time_elapsed>104210962426223</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.7477765</distance>
+    <ele>153.43935126252472</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.530142241379224" lon="8.510118046205324">
+    <acc>4.7</acc>
+    <bear>193.61209</bear>
+    <speed>6.295449</speed>
+    <time_elapsed>104211963331952</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.854746</distance>
+    <ele>153.24457603599876</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.530088840962975" lon="8.510089103460245">
+    <acc>4.84165</acc>
+    <bear>199.34392</bear>
+    <speed>6.1593046</speed>
+    <time_elapsed>104212966578306</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.297936</distance>
+    <ele>153.26100628636777</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+    <trkpt lat="49.530036596379176" lon="8.51005369783224">
+    <acc>4.7</acc>
+    <bear>201.21114</bear>
+    <speed>6.1333766</speed>
+    <time_elapsed>104213967773098</time_elapsed>
+    <provider>gps</provider>
+    <distance>6.3508263</distance>
+    <ele>153.25063110608608</ele>
+    <time>2020-08-06T21:51:03Z</time>
+   </trkpt>
+  </trkseg>
+ </trk>
+</gpx>
