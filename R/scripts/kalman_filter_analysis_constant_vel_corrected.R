@@ -79,8 +79,9 @@ bearing <- as.numeric(bearing)
 setwd(fctDir)
 source("latToMeters.R")
 source("lonToMeters.R")
-lat_m <- coordToMeters(lat)
-lon_m <- coordToMeters(lon)
+
+lat_m <- latToMeters(lat)
+lon_m <- lonToMeters(lat,lon)
 
 len <- length(lat_m)
 delta_t <- 1
@@ -131,17 +132,17 @@ avg_speed_lon <- (lon_m[len]-lon_m[1])/sum(delta_t)
 # x_n_next_n = A * x_n_n + B * u_n_n + w_n
 
 # x: state vector
-#x_n_n_prev <- rbind(
-#lon_m[1],
-#lat_m[1],
-#speed_lon[1],
-#speed_lat[1])
-
 x_n_n_prev <- rbind(
-  lon_m[1],
-  lat_m[1],
-  0.33,
-  1.66)
+lon_m[1],
+lat_m[1],
+speed_lon[1],
+speed_lat[1])
+
+#x_n_n_prev <- rbind(
+ # lon_m[1],
+  #lat_m[1],
+  #2.4,
+  #-0.8)
 
 # A/F state transition matrix
 A <- rbind(
@@ -235,8 +236,7 @@ c(0,0,0,1)
 
 ##########################
 ### begin loop
-setwd(fctDir)
-source("calculate_bearing_from_meters.R")
+
 
 for (i in 2:(len-1)) {  ## da i-1 erster index ist und i = 2 initial state ist, wegen delta_t
 
@@ -303,7 +303,9 @@ print(paste("measurment: " ,y[1,1],sep=""))
 print(paste("estimate: " ,x_n_n[1,1],sep=""))
 print(paste("KG: " ,KG[1,1],sep=""))
 print(paste("vel_x: " ,vel_x,sep=""))
-print(paste("vel_x: " ,speed_lat[i],sep=""))
+print(paste("vel_lon: " ,speed_lon[i],sep=""))
+print(paste("vel_y: " ,vel_y,sep=""))
+print(paste("vel_lat: " ,speed_lat[i],sep=""))
 
 # Covariance Update Equation
 P_n_n <- (1-KG) * P_n_n_prev
@@ -314,16 +316,31 @@ P_n_n <- (1-KG) * P_n_n_prev
 # save data to vector
 x <- rbind(x,c(x_n_n))
 if (i > 2){ 
-vel_lon <- rbind((x[i,1]-x[i-1,1])/delta_t)  
-vel_lat <- rbind((x[i,2]-x[i-1,2])/delta_t) 
+  diff_x <- x[i,1]-x[i-1,1]
+  diff_y <- x[i,2]-x[i-1,2]
+vel_lon <- rbind((diff_x)/delta_t[i])  
+vel_lat <- rbind((diff_y)/delta_t[i]) 
+vel_x <- diff_x/delta_t[i]
+vel_y <- diff_y/delta_t[i]
  
+vel <- sqrt(vel_x*vel_x + vel_y*vel_y)
+setwd(fctDir)
+source("bearing_from_x_y.R")
+bearing <- bearing_from_x_y(diff_x, diff_y)
 
+print(paste("velocity: ", vel, sep=""))
+print(paste("velocity_X: ", vel_x, sep=""))
+print(paste("velocity_y: ", vel_y, sep=""))
+print(paste("bearing: ", bearing, sep=""))
 
 } # end if (i > 2)
 
 # update state
 x_n_n_prev <- x_n_n
 P_n_n_prev <- P_n_n + Q
+
+
+
 
 }
 
@@ -360,8 +377,11 @@ windows()
   plot(x[,4], lwd=2, col="blue")
   legend("topleft", legend=c("speed lon","speed lat"), lwd=c(1,2), col=c("red","blue"))
   
-  windows()
-  plot(sqrt((x[,3]^2)+(x[,4]^2)), lwd=2, col="red")
   
   speed2 <- sqrt((x[,3]^2)+(x[,4]^2))
+  windows()
+  plot(speed, lwd=2, col="red")
+lines(speed2, lwd=2, col="blue")
+  
+ 
 

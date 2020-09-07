@@ -5,11 +5,8 @@ library('pracma')
 
 # Convert from Degrees to Radians
 latitude <- deg2rad(latitude)
-longitude <- deg2rad(longitude)
 
+meters <- 40075000 * cos(latitude) / 360 * longitude
 
-earthRadius = 6367000 # Radius in m
-posX = earthRadius * cos(latitude) * cos(longitude)
-posY = earthRadius * cos(latitude) * sin(longitude)
-return(posX)
+return(meters)
 }
