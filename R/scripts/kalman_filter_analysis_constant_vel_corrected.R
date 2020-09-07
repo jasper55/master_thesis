@@ -116,10 +116,8 @@ speed <- data_set$speed
 len <- length(lon_m)
 
 
-avg_speed_lat <- (lat_m[len]-lat_m[1])/sum(delta_t)
 speed_lat <- cos(bearing*pi/180) * speed
 speed_lon <- sin(bearing*pi/180) * speed
-avg_speed_lon <- (lon_m[len]-lon_m[1])/sum(delta_t)
 
 
 
@@ -138,11 +136,6 @@ lat_m[1],
 speed_lon[1],
 speed_lat[1])
 
-#x_n_n_prev <- rbind(
- # lon_m[1],
-  #lat_m[1],
-  #2.4,
-  #-0.8)
 
 # A/F state transition matrix
 A <- rbind(
@@ -174,8 +167,6 @@ w_n <- rbind(0.1,0.1,0.1,0.1)
 
 x <- rbind(c(NA,NA,NA,NA))
 x <- rbind(c(x_n_n_prev))
-vel_lon <- avg_speed_lon  
-vel_lat <- avg_speed_lat
 
 
 # set uncertainities
@@ -209,8 +200,8 @@ messurement_error_resetted <- FALSE
 
 
 R <- rbind(
-c(factor_mess_error * 3 *obs_error * factor_lon,0,0,0),
-c(0,factor_mess_error * 3*obs_error * factor_lat,0,0),
+c(factor_mess_error * 9 *obs_error * factor_lon,0,0,0),
+c(0,factor_mess_error * 9*obs_error * factor_lat,0,0),
 c(0,0,factor_mess_error * speed_error_lon*3,0),
 c(0,0,0,factor_mess_error * speed_error_lat*3)
 )      
@@ -260,8 +251,8 @@ c(0,delta_t[i])
 R <- rbind(
 c(9 *factor_mess_error * obs_error * factor_lon,0,0,0),
 c(0,9* factor_mess_error * obs_error * factor_lat,0,0),
-c(0,0,3*factor_mess_error * speed_error_lon / 3,0),
-c(0,0,0,3* factor_mess_error * speed_error_lat / 3)
+c(0,0,3*factor_mess_error * speed_error_lon ,0),
+c(0,0,0,3* factor_mess_error * speed_error_lat )
 ) 
 
 
