@@ -1,7 +1,7 @@
 ## beginning
 
 
-data_set_name <- "car_rides/gps/6-8-2020_3"
+data_set_name <- "not_straight_line/26-7-2020_2"
 relative_Path_PC <- "D:/Github/MasterThesis/master_thesis/R"
 relative_Path_Laptop <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 
@@ -10,6 +10,7 @@ relative_Path_Laptop <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 relative_path <- relative_Path_Laptop
 
 # set project directories
+
 
 homeDir <- paste(relative_path,sep="")
 wrkDir <- paste(relative_path,"/scripts",sep="")
@@ -25,19 +26,15 @@ if (!dir.exists(resDir)){
 
 
 
-#### initial set up:
-need_to_Download_Packages <- true 
 
 # loading a set of libraries with load_lib (functions installs library if not installed yet
 # 
 package_name_string <- c('XML', 'OpenStreetMap',
                          'lubridate', 'ggmap', 'ggplot2', 'raster', 'sp',
                          'geosphere', 'gridExtra')
-# 
+
 for (i in package_name_string) {
-#install.packages(i)
-#library(i,character.only = TRUE)
-require(i,character.only = TRUE)
+  require(i,character.only = TRUE)
 }
 
 
@@ -86,7 +83,7 @@ lon_m <- lonToMeters(lat,lon)
 len <- length(lat_m)
 delta_t <- 1
 for(i in 2:(len)){
-delta_t[i] <- (time_elapsed[i]-time_elapsed[i-1])/1000000000 
+  delta_t[i] <- (time_elapsed[i]-time_elapsed[i-1])/1000000000 
 }
 
 
@@ -97,9 +94,9 @@ data_set <- data.frame(provider = provider[1:len],
                        distance = distance[1:len],
                        time_elapsed = time_elapsed[1:len],
                        bearing = bearing[1:len],
-			   delta_t = delta_t,
-			   speed = speed[1:len]
-  )
+                       delta_t = delta_t,
+                       speed = speed[1:len]
+)
 
 data_set <- data_set[data_set$delta_t != 0, ]
 
@@ -125,33 +122,34 @@ speed_lon <- sin(bearing*pi/180) * speed
 #########
 
 
+bearing_kf <- bearing[1]
 
 ## state extrapolation  equation 
 # x_n_next_n = A * x_n_n + B * u_n_n + w_n
 
 # x: state vector
 x_n_n_prev <- rbind(
-lon_m[1],
-lat_m[1],
-speed_lon[1],
-speed_lat[1])
+  lon_m[1],
+  lat_m[1],
+  speed_lon[1],
+  speed_lat[1])
 
 
 # A/F state transition matrix
 A <- rbind(
-c(1,0,delta_t[1],0),
-c(0,1,0,delta_t[1]),
-c(0,0,1,0),
-c(0,0,0,1)
+  c(1,0,delta_t[1],0),
+  c(0,1,0,delta_t[1]),
+  c(0,0,1,0),
+  c(0,0,0,1)
 )
 
 # B/G control matrix/input transition matrix 
 ## descirbes what is controlling the movement of the object, like gravity or any other force
 B <- rbind(
-c(0.5*(delta_t[1])^2,0),
-c(0,0.5*(delta_t[1])^2),
-c(delta_t[1],0),
-c(0,delta_t[1])
+  c(0.5*(delta_t[1])^2,0),
+  c(0,0.5*(delta_t[1])^2),
+  c(delta_t[1],0),
+  c(0,delta_t[1])
 )
 ## u_n vector: control variable matrix
 # for constant vel:
@@ -172,57 +170,64 @@ x <- rbind(c(x_n_n_prev))
 # set uncertainities
 
 # error in the estimate
-factor_lat_lon <- sum(lat_m)/sum(lon_m)
-factor_lat <- factor_lat_lon/(factor_lat_lon+1)
-factor_lon <- 1/(factor_lat_lon+1)
+rate_lat_lon <- abs(lat_m[len]-lat_m[1])/abs(lon_m[len]-lon_m[1])
+#factor_lat <- factor_lat_lon/(factor_lat_lon+1)
+#factor_lon <- 1/(factor_lat_lon+1)
+factor_lat <- rate_lat_lon
+factor_lon <- 1-rate_lat_lon
+
+
 
 obs_error <- (accuracy[1]*accuracy[1])/4 
 ## half of messurement error, 4 because of 2 dimensions
 
-process_error <- obs_error  # but 3 times the error as a general rule to start with
-speed_error_lat <- process_error * factor_lat * mean(delta_t,na.rm=TRUE)
-speed_error_lon <- process_error * factor_lon * mean(delta_t,na.rm=TRUE)
+p_factor_error <- obs_error * 3 # but 3 times the error as a general rule to start with
+#speed_error_lat <- factor_lat * p_factor_error * mean(delta_t,na.rm=TRUE)
+#speed_error_lon <- factor_lon * p_factor_error * mean(delta_t,na.rm=TRUE)
+
+
+
+
 
 ## 2 initial process covariance matrix (process variation - error of the estimation) 
 P_n_n_prev <-  rbind(
-c(process_error * factor_lon,0,0,0),
-c(0,process_error * factor_lat,0,0),
-c(0,0,speed_error_lon,0),
-c(0,0,0,speed_error_lat)
+  c(p_factor_error * factor_lon,0,0,0),
+  c(0,p_factor_error * factor_lat,0,0),
+  c(0,0,factor_lon * p_factor_error * mean(delta_t,na.rm=TRUE),0),
+  c(0,0,0,factor_lat * p_factor_error * mean(delta_t,na.rm=TRUE))
 )
 
 # R_n = measurement error ----- accurarcy!!!!
 ## sensor noise covariance matrix
-bearing_kalman <- 0
-factor_mess_error <- 3
+
 messurement_error_increased <- FALSE
 messurement_error_resetted <- FALSE
 
-
+r_factor_error <- p_factor_error / 100
 R <- rbind(
-c(factor_mess_error * 9 *obs_error * factor_lon,0,0,0),
-c(0,factor_mess_error * 9*obs_error * factor_lat,0,0),
-c(0,0,factor_mess_error * speed_error_lon*3,0),
-c(0,0,0,factor_mess_error * speed_error_lat*3)
-)      
+  c(r_factor_error * factor_lon,0,0,0),
+  c(0,r_factor_error * factor_lat,0,0),
+  c(0,0,factor_lon * r_factor_error * mean(delta_t,na.rm=TRUE),0),
+  c(0,0,0,factor_lat * r_factor_error * mean(delta_t,na.rm=TRUE))
+)     
 
 ### Q/ w_n another uncertainity, environment (waves, gusts, mistakes of the sailor) --- needs to be set depending on conditions
 ### process noise/plant noise/driving noise/dynamics noise/model noise/system noise
 # keeps P from becoming too small or going to 0
 # Q <- 0.1
 Q <- rbind(
-c(0.6,0,0,0),
-c(0,0.6,0,0),
-c(0,0,0.2,0),
-c(0,0,0,0.2)
+  c(0.6,0,0,0),
+  c(0,0.6,0,0),
+  c(0,0,0.2,0),
+  c(0,0,0,0.2)
 )
 
 ## H Helper Matrix
 H <- rbind(
-c(1,0,0,0),
-c(0,1,0,0),
-c(0,0,1,0),
-c(0,0,0,1)
+  c(1,0,0,0),
+  c(0,1,0,0),
+  c(0,0,1,0),
+  c(0,0,0,1)
 ) 
 
 ##########################
@@ -248,12 +253,14 @@ c(delta_t[i],0),
 c(0,delta_t[i])
 )
 
-R <- rbind(
-c(9 *factor_mess_error * obs_error * factor_lon,0,0,0),
-c(0,9* factor_mess_error * obs_error * factor_lat,0,0),
-c(0,0,3*factor_mess_error * speed_error_lon ,0),
-c(0,0,0,3* factor_mess_error * speed_error_lat )
-) 
+
+
+#R <- rbind(
+#c(9 *factor_mess_error * obs_error * factor_lon,0,0,0),
+#c(0,9* factor_mess_error * obs_error * factor_lat,0,0),
+#c(0,0,3*factor_mess_error * speed_error_lon ,0),
+#c(0,0,0,3* factor_mess_error * speed_error_lat )
+#) 
 
 
 ## 1.
@@ -278,7 +285,7 @@ vel_y <- (lat_m[i]-lat_m[i-1])/delta_t[i]
 #e <- accuracy[i]  # just increases the value of the estimate, doesnt bring better results
 e <- 0
 current_mes_error <- rbind(e,e,e,e)
-y <- rbind(lon_m[i],lat_m[i],speed_lon[i],speed_lat[i]) + current_mes_error 
+#y <- rbind(lon_m[i],lat_m[i],speed_lon[i],speed_lat[i]) + current_mes_error 
 y <- rbind(lon_m[i],lat_m[i],vel_x,vel_y) + current_mes_error 
 
 ### 6. 
@@ -307,22 +314,31 @@ P_n_n <- (1-KG) * P_n_n_prev
 # save data to vector
 x <- rbind(x,c(x_n_n))
 if (i > 2){ 
+
+  
+  #### just debugging
+  ########################
+  
+  
   diff_x <- x[i,1]-x[i-1,1]
   diff_y <- x[i,2]-x[i-1,2]
-vel_lon <- rbind((diff_x)/delta_t[i])  
-vel_lat <- rbind((diff_y)/delta_t[i]) 
-vel_x <- diff_x/delta_t[i]
-vel_y <- diff_y/delta_t[i]
- 
-vel <- sqrt(vel_x*vel_x + vel_y*vel_y)
-setwd(fctDir)
-source("bearing_from_x_y.R")
-bearing <- bearing_from_x_y(diff_x, diff_y)
-
-print(paste("velocity: ", vel, sep=""))
-print(paste("velocity_X: ", vel_x, sep=""))
-print(paste("velocity_y: ", vel_y, sep=""))
-print(paste("bearing: ", bearing, sep=""))
+  vel_lon <- rbind((diff_x)/delta_t[i])  
+  vel_lat <- rbind((diff_y)/delta_t[i]) 
+  vel_x <- diff_x/delta_t[i]
+  vel_y <- diff_y/delta_t[i]
+  
+  vel <- sqrt(vel_x*vel_x + vel_y*vel_y)
+  setwd(fctDir)
+  source("bearing_from_x_y.R")
+  bear <- bearing_from_x_y(diff_x, diff_y)
+  bearing_kf <- rbind(bearing_kf,bear)
+  
+  print(paste("velocity: ", vel, sep=""))
+  print(paste("velocity_X: ", vel_x, sep=""))
+  print(paste("velocity_y: ", vel_y, sep=""))
+  print(paste("bearing: ", bearing[i], sep=""))
+  ##############
+  
 
 } # end if (i > 2)
 
@@ -345,34 +361,41 @@ P_n_n_prev <- P_n_n + Q
 windows()
   plot(lon_m[1:len])
   lines(x[,1], lwd=2, col="blue")
-  legend("topleft", legend=c("measurements","predictions"), lwd=c(1,2), col=c("black","blue"))
+  legend("topleft", legend=c("measurements","estimates"), lwd=c(1,2), col=c("black","blue"))
 
 
 windows()
   plot(lat_m[1:len])
   lines(x[,2], lwd=2, col="blue")
-  legend("topleft", legend=c("measurements","predictions"), lwd=c(1,2), col=c("black","blue"))
+  legend("topleft", legend=c("measurements","estimates"), lwd=c(1,2), col=c("black","blue"))
 
 windows()
   plot(lon_m[1:len],lat_m[1:len])
   par(new=TRUE)
   plot(x[,1],x[,2], type="l", lwd=2, col="blue")
-  legend("topleft", legend=c("measurements","predictions"), lwd=c(1,2), col=c("black","blue"))
+  legend("topleft", legend=c("measurements","estimates"), lwd=c(1,2), col=c("black","blue"))
 
 
   
   # print results
-  windows()
-  plot(x[,3], lwd=2, col="red")
-  par(new=TRUE)
-  plot(x[,4], lwd=2, col="blue")
-  legend("topleft", legend=c("speed lon","speed lat"), lwd=c(1,2), col=c("red","blue"))
+  #windows()
+ # plot(x[,3], lwd=2, col="red")
+ # par(new=TRUE)
+ # plot(x[,4], lwd=2, col="blue")
+ # legend("topleft", legend=c("speed lon","speed lat"), lwd=c(1,2), col=c("red","blue"))
   
   
-  speed2 <- sqrt((x[,3]^2)+(x[,4]^2))
+  speed_kf <- sqrt((x[,3]^2)+(x[,4]^2))
   windows()
-  plot(speed, lwd=2, col="red")
-lines(speed2, lwd=2, col="blue")
+  plot(speed, lwd=2, col="black")
+lines(speed_kf, lwd=2, col="blue")
+legend("topleft", legend=c("measurements","estimates"), lwd=c(1,2), col=c("black","blue"))
+
+
+windows()
+plot(bearing, lwd=2, col="black")
+lines(bearing_kf, lwd=2, col="blue")
+legend("topleft", legend=c("measurements","estimates"), lwd=c(1,2), col=c("black","blue"))
   
  
 

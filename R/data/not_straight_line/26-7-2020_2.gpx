@@ -3,67 +3,7 @@
    <time>26-7-2020 3:53</time>
   </metadata> <trk>
   <author>Jan-Jasper Wagner</author>
-  <trkseg>
-   <trkpt lat="52.5090018" lon="13.3513493">
-    <accuracy>500.0</accuracy>
-    <bearing>224.53723</bearing>
-    <speed>6.6790706E-4</speed>
-    <time_elapsed>73920805000000</time_elapsed>
-    <provider>fused</provider>
-    <distance>0</distance>
-    <elevation>0.0</elevation>
-    <time>2020-07-26T15:53:34Z</time>
-   </trkpt>
-    <trkpt lat="52.5094647" lon="13.3532178">
-    <acc>259.5</acc>
-    <bear>68.12026</bear>
-    <speed>0.055923596</speed>
-    <time_elapsed>73922833246837</time_elapsed>
-    <provider>fused</provider>
-    <distance>136.9222</distance>
-    <ele>90.29115772526711</ele>
-    <time>2020-07-26T15:53:34Z</time>
-   </trkpt>
-    <trkpt lat="52.5095576" lon="13.3533319">
-    <acc>179.333</acc>
-    <bear>37.431477</bear>
-    <speed>2.1991823</speed>
-    <time_elapsed>73923821472357</time_elapsed>
-    <provider>fused</provider>
-    <distance>12.91824</distance>
-    <ele>80.81608477421105</ele>
-    <time>2020-07-26T15:53:34Z</time>
-   </trkpt>
-    <trkpt lat="52.5096075" lon="13.3534386">
-    <acc>139.25</acc>
-    <bear>47.73188</bear>
-    <speed>4.4878993</speed>
-    <time_elapsed>73924858761420</time_elapsed>
-    <provider>fused</provider>
-    <distance>9.12769</distance>
-    <ele>84.8276893272996</ele>
-    <time>2020-07-26T15:53:34Z</time>
-   </trkpt>
-    <trkpt lat="52.5095243" lon="13.3535271">
-    <acc>19.0</acc>
-    <bear>110.47077</bear>
-    <speed>4.6587667</speed>
-    <time_elapsed>73925836305690</time_elapsed>
-    <provider>fused</provider>
-    <distance>11.037221</distance>
-    <ele>75.97114644292742</ele>
-    <time>2020-07-26T15:53:34Z</time>
-   </trkpt>
-    <trkpt lat="52.5094529" lon="13.3536434">
-    <acc>19.0</acc>
-    <bear>116.234184</bear>
-    <speed>4.922156</speed>
-    <time_elapsed>73927545734857</time_elapsed>
-    <provider>fused</provider>
-    <distance>11.201642</distance>
-    <ele>89.95773896202445</ele>
-    <time>2020-07-26T15:53:34Z</time>
-   </trkpt>
+  <trkseg>     
     <trkpt lat="52.5094881" lon="13.3537319">
     <acc>19.573</acc>
     <bear>84.10082</bear>
