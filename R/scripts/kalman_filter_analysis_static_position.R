@@ -1,12 +1,12 @@
 ## beginning
 
 
-data_set_name <- "one_location_data/1-8-2020_3"
+data_set_name <- "one_location_data/28-7-2020_2"
 relative_Path_PC <- "D:/Github/MasterThesis/master_thesis/R"
 relative_Path_Laptop <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 
-relative_path <- relative_Path_PC
-#relative_path <- relative_Path_Laptop
+#relative_path <- relative_Path_PC
+relative_path <- relative_Path_Laptop
 
 # set project directories
 
@@ -81,25 +81,17 @@ len <- length(lat_m)
 
 #### with Kalman Gain
 #########
-# calculate variance:
-variance_lat_m <- var(lat_m)*(len-1)/len
 
 
 x_n_n_prev <- lat_m[1]
-#vel_n_n_prev <- avg_vel_lat
-#vel_n_n_prev <- 0
 x <- c(lat_m[1])
-#vel <- c(avg_vel_lat)
 
-for(i in 1:len){
-acc_square[i] <- accuracy[i]*accuracy[i]
-}
+
 
 # set uncertainities
-#P_n_n_prev <- 1/(len-1) *sqrt((sum(acc_square,na.rm=TRUE)))
-P_n_n_prev <- (accuracy[1]*accuracy[1])*9/4  # error in the estimate
-#R_n = measurement error ----- accurarcy!!!!
+P_n_n_prev <- (accuracy[1]*accuracy[1])*2  # error in the estimate
 
+#R_n = measurement error ----- accurarcy!!!!
 ### Q another uncertainity, environment (waves, gusts, mistakes of the sailor) --- needs to be set depending on conditions
 ### process noise/plant noise/driving noise/dynamics noise/model noise/system noise
 
@@ -108,10 +100,9 @@ P_n_n_prev <- (accuracy[1]*accuracy[1])*9/4  # error in the estimate
 for (i in 2:(len-2)) {
 
 # other option
-R_n <- accuracy[i]*accuracy[i]/4 # error in the measurement, /2*2 = 4, because only one dim
-
+R_n <- accuracy[i]*accuracy[i]*30 # error in the measurement, higher error -> smaller kalman gain -> faster adjusting to real value
 KG <- P_n_n_prev / ( P_n_n_prev + R_n)
-print(paste("KG: ",KG,sep=""))
+#print(paste("KG: ",KG,sep=""))
 
 # get measurement & predict estimate
 x_n_n <- x_n_n_prev + KG * (lat_m[i] - x_n_n_prev)
@@ -119,6 +110,9 @@ x_n_n <- x_n_n_prev + KG * (lat_m[i] - x_n_n_prev)
 
 #4. Covariance Update Equation
 P_n_n <- (1-KG) * P_n_n_prev
+
+print(paste("P: ",P_n_n,sep=""))
+
 
 # update estimate
 x_n_n_prev <- x_n_n
@@ -128,20 +122,6 @@ P_n_n_prev <- P_n_n
 x[i] <- x_n_n_prev
 
 }
-
-
-## not used yet
-## x_n_next_n <- x_n_n + delta_t[i] * vel_n_n
-## vel_n_n_prev <- vel_n_next_n
-# vel_n_n <- vel_n_n_prev + beta *((lat_m[i] - x_n_n_prev)/delta_t[i])
-
-### for not static case:
-## p_x_n_next_n = p_x_n_n + delta_t[i]^2 * P_v_n_n
-## P_v_n_next_n = P_v_n_n
-
-#vel_n_next_n <- vel_n_n
-
-#vel[i] <- vel_n_n_prev
 
 
 windows()

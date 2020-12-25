@@ -1,12 +1,12 @@
 ## beginning
 
 
-data_set_name <- "one_location_data/1-8-2020_3"
+data_set_name <- "one_location_data/24-7-2020_1"
 relative_Path_PC <- "D:/Github/MasterThesis/master_thesis/R"
 relative_Path_Laptop <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 
-relative_path <- relative_Path_PC
-#relative_path <- relative_Path_Laptop
+#relative_path <- relative_Path_PC
+relative_path <- relative_Path_Laptop
 
 # set project directories
 
@@ -25,7 +25,7 @@ if (!dir.exists(resDir)){
 
 
 #### initial set up:
-need_to_Download_Packages <- true 
+need_to_Download_Packages <- FALSE 
 
 # loading a set of libraries with load_lib (functions installs library if not installed yet
 # 
@@ -71,9 +71,11 @@ lon <- as.numeric(coords["lon",])
 
 ### convert coordinates to meters
 setwd(fctDir)
-source("coordinate_to_meters.R")
-lat_m <- coordinate_to_meters(lat,0)
-lon_m <- coordinate_to_meters(0,lon)
+source("latToMeters.R")
+source("lonToMeters.R")
+
+lat_m <- latToMeters(lat)
+lon_m <- lonToMeters(lat,lon)
 
 len <- length(lat_m)
 
@@ -88,8 +90,7 @@ avg_speed_lon <- (lon_m[len]-lon_m[2])/sum(delta_t)
 
 #### with Kalman Gain
 #########
-# calculate variance:
-variance_lat_m <- var(lat_m)*(len-1)/len
+
 
 
 ## state extrapolation  equation 
@@ -102,71 +103,51 @@ lat_m[2],
 avg_speed_lon,
 avg_speed_lat)
 
-# A/F state transition matrix
-A <- rbind(
-c(1,0,delta_t[2],0),
-c(0,1,0,delta_t[2]),
-c(0,0,1,0),
-c(0,0,0,1)
-)
 
-# B/G control matrix/input transition matrix 
-## descirbes what is controlling the movement of the object, like gravity or any other force
-B <- rbind(
-c(0.5*(delta_t[2])^2,0),
-c(0,0.5*(delta_t[2])^2),
-c(delta_t[2],0),
-c(0,delta_t[2])
-)
 ## u_n vector: control variable matrix
 # for constant vel:
 a_x <- 0
 a_y <- 0
 u_n_n <- rbind(a_x,a_y)
 
-## ---- B also becomes zero
-
 
 ### w: predicted state noise matrix
 w_n <- rbind(0.3,0.3,0.3,0.3)
 
-#vel_n_n_prev <- avg_vel_lat
-#vel_n_n_prev <- 0
+
 x <- c(x_n_n_prev)
-#vel <- c(avg_vel_lat)
 
 
 # set uncertainities
-
 # error in the estimate
 factor_lat_lon <- sum(lat_m)/sum(lon_m)
 factor_lat <- factor_lat_lon/(factor_lat_lon+1)
 factor_lon <- 1/(factor_lat_lon+1)
 
-obs_error <- (accuracy[2]*accuracy[2])/4 
-## half of messurement error,becuase of 2 dimensions
+obs_error <- (accuracy[2]*accuracy[2]) 
+k <- 10
+k2 <- k * 5 
 
-process_error <- obs_error * 3 * 3 # but 3 times the error as a general rule to start with
-speed_error_lat <- process_error * factor_lat * mean(delta_t,na.rm=TRUE)
-speed_error_lon <- process_error * factor_lon * mean(delta_t,na.rm=TRUE)
+process_error <- obs_error * k  # but 3 times the error as a general rule to start with
+speed_error_lat <- obs_error * factor_lat * median(delta_t,na.rm=TRUE)
+speed_error_lon <- obs_error * factor_lon * median(delta_t,na.rm=TRUE)
 
 ## 2 initial process covariance matrix (process variation - error of the estimation) 
 P_n_n_prev <-  rbind(
 c(process_error * factor_lon,0,0,0),
 c(0,process_error * factor_lat,0,0),
-c(0,0,speed_error_lon,0),
-c(0,0,0,speed_error_lat)
+c(0,0,speed_error_lon * k,0),
+c(0,0,0,speed_error_lat * k)
 )
 
 # R_n = measurement error ----- accurarcy!!!!
 ## sensor noise covariance matrix
-m_uncertainity <- accuracy[i]*accuracy[i]/4
 # 
 R <- rbind(
 c(obs_error * factor_lon,0,0,0),
 c(0,obs_error * factor_lat,0,0),
-c(0,0,speed_error_lon/9,0),
-c(0,0,0,speed_error_lat/9)
+c(0,0,speed_error_lon * k2,0),
+c(0,0,0,speed_error_lat * k2)
 )      
 
 ### Q/ w_n another uncertainity, environment (waves, gusts, mistakes of the sailor) --- needs to be set depending on conditions
@@ -187,16 +168,6 @@ c(0,1,0,0),
 c(0,0,1,0),
 c(0,0,0,1)
 ) 
-
-H2 <- rbind(
-c(0,0,0,1),
-c(0,0,1,0),
-c(0,1,0,0),
-c(1,0,0,0)
-) 
-
-
-#P_v_n_n <- variance_lat_m_vel
 
 
 
@@ -232,15 +203,15 @@ x_n_next_n = A %*% x_n_n_prev + B %*% u_n_n + w_n
 ## 3.
 # predict process covarinace matrix P
 P_n_n <- A %*% P_n_n_prev %*% t(A) + Q
-diag(diag(P_n_n))
+P_n_n <- diag(diag(P_n_n))
 
-# other option
-#R_n <- accuracy[i]*accuracy[i]/4 # error in the measurement
 
 ### 4.
 ## calculating Kalman Gain
 KG <- (P_n_n %*% H) / ( t(H) %*% P_n_n %*% H + R)
-diag(diag(KG))
+KG <- diag(diag(KG))
+print(paste("KG: ",KG,sep=""))
+print(KG)
 
 ### 5.
 ## New Observation
@@ -257,12 +228,6 @@ x_n_n <- x_n_next_n + KG %*% ( y - H %*% x_n_next_n)
 
 x_n_n_prev <- x_n_n
 
-KG <- P_n_n_prev / ( P_n_n_prev + R_n)
-print(paste("KG: ",KG,sep=""))
-z <- c(lat_m[i],lon_m[i])
-# get measurement & predict estimate
-x_n_n <- x_n_n_prev + KG * ( - x_n_n_prev)
-
 
 # Covariance Update Equation
 P_n_n <- (1-KG) * P_n_n_prev
@@ -271,9 +236,8 @@ P_n_n <- (1-KG) * P_n_n_prev
 x_n_n_prev <- x_n_n
 P_n_n_prev <- P_n_n + Q
 
-# save data to vector
-x[i] <- c(x_n_n_prev)
-
+# save estimation to vector
+x <- rbind(x,c(x_n_n))
 }
 
 
@@ -281,23 +245,10 @@ x[i] <- c(x_n_n_prev)
 ##########################
 ### end loop
 
-## not used yet
-## x_n_next_n <- x_n_n + delta_t[i] * vel_n_n
-## vel_n_n_prev <- vel_n_next_n
-# vel_n_n <- vel_n_n_prev + beta *((lat_m[i] - x_n_n_prev)/delta_t[i])
-
-### for not static case:
-## p_x_n_next_n = p_x_n_n + delta_t[i]^2 * P_v_n_n
-## P_v_n_next_n = P_v_n_n
-
-#vel_n_next_n <- vel_n_n
-
-#vel[i] <- vel_n_n_prev
-
 
 windows()
   plot(lat_m)
-  lines(x, lwd=2, col="blue")
+  lines(x[,2], lwd=2, col="blue")
   abline(h=mean(lat_m), col="green")
   legend("topleft", legend=c("measurements","predictions","mean"), lwd=c(1,2,2), col=c("black","blue","green"))
 

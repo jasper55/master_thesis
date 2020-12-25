@@ -5,8 +5,8 @@ data_set_name <- "24-1-2020_1"
 relative_Path_PC <- "D:/Github/MasterThesis/master_thesis/R"
 relative_Path_Laptop <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 
-relative_path <- relative_Path_PC
-#relative_path <- relative_Path_Laptop
+#relative_path <- relative_Path_PC
+relative_path <- relative_Path_Laptop
 
 # set project directories
 
@@ -25,7 +25,7 @@ if (!dir.exists(resDir)){
 
 
 #### initial set up:
-need_to_Download_Packages <- true 
+need_to_Download_Packages <- FALSE 
 
 # loading a set of libraries with load_lib (functions installs library if not installed yet
 # 
@@ -71,9 +71,11 @@ lon <- as.numeric(coords["lon",])
 
 ### convert coordinates to meters
 setwd(fctDir)
-source("coordinate_to_meters.R")
-lat_m <- coordinate_to_meters(lat,0)
-lon_m <- coordinate_to_meters(0,lon)
+source("latToMeters.R")
+source("lonToMeters.R")
+
+lat_m <- latToMeters(lat)
+lon_m <- lonToMeters(lat,lon)
 
 len <- length(lat_m)
 lat_m <- lat_m[12:len] 
@@ -84,7 +86,8 @@ len <- length(lat_m)
 
 delta_t <- 0
 for(i in 2:len){
-delta_t[i] <- (time_elapsed[i]-time_elapsed[i-1])/1000000000 
+NANO_TO_SECONDS <- 1000000000
+delta_t[i] <- (time_elapsed[i]-time_elapsed[i-1])/NANO_TO_SECONDS 
 }
 
 total_time <- sum(delta_t)
@@ -94,52 +97,50 @@ total_distance_lon <- lon_m[len]-lon_m[1]
 avg_vel_lon <- total_distance_lon/total_time 
 
 
-
-
 ## one dimensional (lon in meters) Kalman Filter with constant vel 
 
+k <- 0.1
+k2 <- k * 1
+
 # initial state
-x0 <- lon_m[1]
-P0 <- (mean(accuracy,na.rm=TRUE)*3)^2
+x0 <- lat_m[1]
+P0 <- (median(accuracy,na.rm=TRUE))^2 * k
 
-# prediction
-
-x <- x0
-x_p <- x0
+x <- NA
+x_prev <- x0
 P <- P0
-P_p <- P0
-P_v <- P0
-dif <- 0 
+P_p <- NA
+Q <- 0.3
+R <- ((median(accuracy,na.rm=TRUE))^2) * k2
 
 
 for (i in 2:length(lon_m)) {
 
-# 1. step measure
-z <- lon_m[i]
-R <- ((mean(accuracy[i],na.rm=TRUE))^2)
 
+# 1. predict
+P_p <- P  + Q
+x_p <- x_prev + delta_t[i] * avg_vel_lon
+K <- P_p / (P_p + R)
 
-# 2. step update
+# 2. step measure
+y <- lat_m[i]
 
-K <- P_p[i-1] / (P_p[i-1] + R)
+# 3. estimate state
+x[i] <- x_p + K * (y - x_p)
+
+# 4. step update
+P <- (1-K) * P_p
+x_prev <- x[i]
 print(K)
-x[i] <- x_p[i-1] + K * (z-x_p[i-1])
-P[i] <- (1-K) * P_p[i-1]
-
-# 3. predict
-
-x_p[i] <- x[i] + delta_t[i] * avg_vel_lon
-
-P_p[i] <- P[i] + delta_t[i]^2 * P_v
 
 }
 
 
 
 windows()
-  plot(lon_m)
-  lines(x_p, lwd=2, col="blue")
-  legend("topright", legend=c("measurements","predictions","mean"), lwd=c(1,2,2), col=c("black","blue","green"))
+  plot(lat_m)
+  lines(x, lwd=2, col="blue")
+  legend("topright", legend=c("measurements","predictions"), lwd=c(1,2), col=c("black","blue"))
 
 
 
@@ -155,35 +156,47 @@ speed[i+1] <- (x_p[i+1]-x_p[i])/delta_t[i+1]
 
 
 
-## one dimensional Kalman Filter (static position) on lat
+## one dimensional Kalman Filter (static velocity) 
+
+
+
+# parameter adjustmens that effect P and R and their relationship
+k <- 0.1
+k2 <- k * 1
 
 # initial state
 vel0 <- speed[1]
-P0 <- (mean(accuracy,na.rm=TRUE)*3)^2
-# prediction
+P0 <- (median(accuracy/delta_t,na.rm=TRUE))^2 * k
 
-vel <- vel0
+vel_prev <- vel0
+vel <- NA
 P <- P0
+P <- P0
+Q <- 0.3
+R <- ((median(accuracy/delta_t,na.rm=TRUE))^2) * k2
 
 for (i in 2:length(speed)) {
 
-# 1. step measure
+
+# 1. predict
+P_p <- P + Q
+x_p <- x_prev + delta_t[i] * avg_vel_lon
+vel_p <- vel_prev 
+K <- P_p / (P_p + R)
+
+
+# 2. step measure
 z <- speed[i]
-R <- (mean(accuracy[i],na.rm=TRUE))^2
 
-# 2. step update
 
-K <- P / (P+R)
-print(K)
-vel[i] <- vel[i-1] + K * (z-vel[i-1])
-print(i)
-print(vel[i-1])
-P <- (1-K) * P
+# 3. estimate state
+vel[i] <- vel_p + K * (z - vel_p)
 
-# 3. predict
-# for static phenomena prediction doesn't change
-# x_p <- x
-# P_p <- P
+
+# 4. step update
+P <- (1-K) * P_p
+vel_prev <- vel[i]
+print(vel[i])
 
 }
 
@@ -192,5 +205,5 @@ P <- (1-K) * P
 windows()
   plot(speed)
   lines(vel, lwd=2, col="blue")
-  legend("topright", legend=c("measurements","predictions","mean"), lwd=c(1,2,2), col=c("black","blue","green"))
+  legend("topright", legend=c("measurements","predictions"), lwd=c(1,2), col=c("black","blue"))
 
