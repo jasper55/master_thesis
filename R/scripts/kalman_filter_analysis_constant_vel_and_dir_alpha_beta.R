@@ -1,12 +1,12 @@
 ## beginning
 
 
-data_set_name <- "31-1-2020_2"
+data_set_name <- "not_straight_line/26-7-2020_1"
 relative_Path_PC <- "D:/Github/MasterThesis/master_thesis/R"
 relative_Path_Laptop <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 
-relative_path <- relative_Path_PC
-#relative_path <- relative_Path_Laptop
+#relative_path <- relative_Path_PC
+relative_path <- relative_Path_Laptop
 
 # set project directories
 
@@ -92,12 +92,6 @@ data_set <- data.frame(provider = provider[1:M],
   )
 
 
-# delete rows where distance between two points is 0
-#data_set <- data_set[data_set$distance != 0, ]
-#data_set <- data_set[data_set$delta_t != 0.0, ]
-
-
-#data_set <- unique(data_set)
 
 M <- length(data_set$lat) 
 
@@ -121,15 +115,11 @@ data_set <- data.frame(provider = provider[1:M],
 
 ### convert coordinates to meters
 setwd(fctDir)
-source("coordinate_to_meters.R")
-lat_m <- coordinate_to_meters(data_set$lat,0)
-lon_m <- coordinate_to_meters(0,data_set$lon)
+source("latToMeters.R")
+source("lonToMeters.R")
 
-#len <- length(lat_m)
-#lat_m <- lat_m[12:len] 
-#lon_m <- lon_m[12:len] 
-#accuracy <- accuracy[12:len] 
-#time_elapsed <- time_elapsed[12:len]
+lat_m <- latToMeters(data_set$lat)
+lon_m <- lonToMeters(data_set$lat,data_set$lon)
 
 delta_t <- data_set$delta_t
 len <- length(lat_m)
@@ -144,12 +134,15 @@ avg_vel_lat <- total_distance_lat/total_time
 
 #### new version
 
-x_n_n_prev <- lat_m[1]
-vel_n_n_prev <- avg_vel_lat
+
+x0 <- lat_m[1]
+vel0 <- avg_vel_lat
+x_n_n_prev <- x0
+vel_n_n_prev <- vel0
 x <- c(lat_m[1])
 vel <- c(avg_vel_lat)
-alpha <- 0.8
-beta <- 0.05
+alpha <- 0.5
+beta <- 0.01
 
 
 for (i in 2:(len-1)) {

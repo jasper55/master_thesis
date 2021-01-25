@@ -1,12 +1,12 @@
 ## beginning
 
 
-data_set_name <- "26-7-2020_1"
+data_set_name <- "23-7-2020_1"
 relative_Path_PC <- "D:/Github/MasterThesis/master_thesis/R"
 relative_Path_Laptop <- "D:/Backup/01_Masterarbeit/master_thesis/R"
 
-relative_path <- relative_Path_PC
-#relative_path <- relative_Path_Laptop
+#relative_path <- relative_Path_PC
+relative_path <- relative_Path_Laptop
 
 # set project directories
 
@@ -25,7 +25,7 @@ if (!dir.exists(resDir)){
 
 
 #### initial set up:
-need_to_Download_Packages <- true 
+need_to_Download_Packages <- FALSE 
 
 # loading a set of libraries with load_lib (functions installs library if not installed yet
 # 
@@ -71,9 +71,11 @@ lon <- as.numeric(coords["lon",])
 
 ### convert coordinates to meters
 setwd(fctDir)
-source("coordinate_to_meters.R")
-lat_m <- coordinate_to_meters(lat,0)
-lon_m <- coordinate_to_meters(0,lon)
+source("latToMeters.R")
+source("lonToMeters.R")
+
+lat_m <- latToMeters(lat)
+lon_m <- lonToMeters(lat,lon)
 
 len <- length(lat_m)
 lat_m <- lat_m[12:len] 
@@ -99,8 +101,11 @@ avg_vel_lat <- total_distance_lat/total_time
 ## one dimensional Kalman Filter (static position) on lat
 
 # initial state
+k <- 20
+k2 <- k * 5
 x0 <- lon_m[1]
-P0 <- (mean(accuracy,na.rm=TRUE))^2
+P0 <- (median(accuracy,na.rm=TRUE))^2 * k
+
 
 # prediction
 
@@ -114,7 +119,7 @@ for (i in 2:length(lon_m)) {
 
 # 1. step measure
 z <- lon_m[i]
-R <- (mean(accuracy[i],na.rm=TRUE))^2
+R <- (median(accuracy[i],na.rm=TRUE))^2 * k2
 
 # 2. step update
 
@@ -153,7 +158,7 @@ speed[i+1] <- (x_p[i+1]-x_p[i])/delta_t[i+1]
 
 # initial state
 vel0 <- speed[1]
-P0 <- (mean(accuracy,na.rm=TRUE)*3)^2
+P0 <- (median(accuracy,na.rm=TRUE)*3)^2 * k
 # prediction
 
 vel <- vel0
@@ -163,7 +168,7 @@ for (i in 2:length(speed)) {
 
 # 1. step measure
 z <- speed[i]
-R <- (mean(accuracy[i],na.rm=TRUE))^2
+R <- (mean(accuracy[i],na.rm=TRUE))^2 * k2
 
 # 2. step update
 
@@ -173,11 +178,6 @@ vel[i] <- vel[i-1] + K * (z-vel[i-1])
 print(i)
 print(vel[i-1])
 P <- (1-K) * P
-
-# 3. predict
-# for static phenomena prediction doesn't change
-# x_p <- x
-# P_p <- P
 
 }
 
